@@ -12,6 +12,7 @@ export class UserService {
         const newUser = new this.userModel({firstName , lastName});
     const result=  await  newUser.save();
        console.log(result);
+        return result;
     }
    async getAll() {
         const result = await this.userModel.find();
