@@ -8,8 +8,8 @@ export class UserService {
 
     constructor(@InjectModel('User') private readonly userModel: Model<User> ) { }
 
- async signup(firstName:string, lastName:string) {
-        const newUser = new this.userModel({firstName , lastName});
+ async addUser(role:string, firstName:string, lastName:string, phone:string, email:string) {
+        const newUser = new this.userModel({role,firstName,lastName,phone, email});
     const result=  await  newUser.save();
        console.log(result);
         return result;
