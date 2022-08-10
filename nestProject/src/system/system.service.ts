@@ -8,11 +8,18 @@ const { ObjectId } = require("mongodb");
 export class SystemService {
     constructor(@InjectModel('System') private readonly systemModel: Model<System>) { }
 
-    async addSystem(object: string, objectname: string, owner: string, descrapition: string, phone: string, mail: string) {
+    async addSystem(newSystem: System) {
         console.log("signup");
-        const newSystem = new this.systemModel({ object, objectname, owner, descrapition, phone, mail });
-        const result = await newSystem.save();
-        return result;
+        const createdSystem = new this.systemModel({
+            topic: newSystem.topic,
+            objectName:newSystem.objectname,
+            owner:newSystem.owner,
+            description:newSystem.description,
+            phone: newSystem.phone,
+            email: newSystem.email
+          });
+         const result= await createdSystem.save();
+         return result
     }
 
     async getAll() {
@@ -30,8 +37,8 @@ export class SystemService {
         return "sucsess!"
     }
 
-    async updateSystem(_id: string, object: string, objectname: string, owner: string, descrapition: string, phone: string, mail: string) {
-        const update = await this.systemModel.findByIdAndUpdate(new ObjectId(_id), { _id, object, objectname, owner, descrapition, phone, mail });
+    async updateSystem(_id: string, topic: string, objectname: string, owner: string, description: string, phone: string, mail: string) {
+        const update = await this.systemModel.findByIdAndUpdate(new ObjectId(_id), { _id, topic, objectname, owner, description, phone, mail });
         return update;
     }
 }
