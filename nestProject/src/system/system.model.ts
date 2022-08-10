@@ -1,43 +1,40 @@
+
 import * as mongoose from 'mongoose';
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { log } from 'console';
-import { Document } from 'mongoose';
 
-export type SystemDocument = System & Document;
-
-@Schema()
-export class System {
-    constructor(){
-        console.log('construct') ;
-    }
-  @Prop({ required: true })
-  object: string;
-
-  @Prop({ required: true })
-  objectname: string;
-
-  @Prop({ required: true })
-  owner: string;
-
-  @Prop({ required: true })
-  descrapition: string;
-
-  @Prop({ required: true })
-    phone: string;
-
-  @Prop({ required: true })
-    mail: string;
-
-}
-
-export const SystemDocument = SchemaFactory.createForClass( System );
+export const SystemSchema = new mongoose.Schema({
+  topic: { type: String, required: true },
+  objectname: { type: String, required: true },
+  owner: { type: String, required: true },
+  description: { type: String, required: true },
+  phone: { type: String, required: true },
+  email: { type: String, required: true, unique: true},
+});
 
 export interface System {
     id: string;
-    object: string;
+    topic: string;
     objectname: string;
     owner: string;
-    descrapition: string;
+    description: string;
     phone: string;
-    mail: string;
+    email: string;
 }
+
+// import * as mongoose from 'mongoose';
+
+// export const UserSchema = new mongoose.Schema({
+//   role: { type: String, enum: ['admin', 'customer'], required: true },
+//   firstName: { type: String, required: true },
+//   lastName: { type: String, required: true },
+//   phone: { type: String, required: true },
+//   email: { type: String, required: true, unique: true},
+// });
+
+// export interface User {
+//   uid: string;
+//   role: string;
+//   firstName: string;
+//   lastName: string;
+//   phone: string;
+//   email: string;
+// }
