@@ -1,4 +1,5 @@
 import { Controller, Post, Body, Get, Delete, Put, Param } from '@nestjs/common';
+import { User } from './user.model';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -6,10 +7,9 @@ export class UserController {
   constructor(private userService: UserService) { }
 
   @Post()
-  async signup(@Body('role') role: string, @Body('firstName') firstName: string, @Body('lastName') lastName: string,
-    @Body('phone') phone: string, @Body('email') email: string) {
-    const newUser = await this.userService.addUser(role, firstName, lastName, phone, email)
-    return newUser
+  async signup(@Body('newUser') newUser: User) {
+    const result = await this.userService.addUser(newUser)
+    return result
   }
   @Get()
   getAll() {
@@ -25,10 +25,9 @@ export class UserController {
     return this.userService.deleteUser(_id)
   }
   @Put('/:id')
-  update(@Param('id') _id: string, @Body('role') role: string, @Body('firstName') firstName: string,
-    @Body('lastName') lastName: string, @Body('phone') phone: string, @Body('phone') @Body('email') email: string) {
+  update(@Param('id') _id: string, @Body('updateUser') updateUser:User ) {
     console.log(_id)
-    return this.userService.updateUser(_id, role, firstName, lastName, phone, email)
+    return this.userService.updateUser(_id, updateUser)
   }
 
 }

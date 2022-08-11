@@ -9,9 +9,15 @@ export class UserService {
 
     constructor(@InjectModel('User') private readonly userModel: Model<User> ) { }
 
- async addUser(role:string, firstName:string, lastName:string, phone:string, email:string) {
-        const newUser = new this.userModel({role,firstName,lastName,phone, email});
-    const result=  await  newUser.save();
+ async addUser(newUser:User) {
+        const createUser = new this.userModel(
+            {role:newUser.role,
+                firstName:newUser.firstName,
+                lastName:newUser.lastName,
+                phone: newUser.phone, 
+                email: newUser.email
+            });
+    const result=  await  createUser.save();
        console.log(result);
         return result;
     }
@@ -30,8 +36,14 @@ export class UserService {
         return "sucsess!"
        }
 
-       async updateUser(_id:string,role:string,firstName: string,lastName:string,phone: string, email:string) {
-        const update = await this.userModel.findByIdAndUpdate(new ObjectId(_id),{_id,role, firstName,lastName,phone, email});
+       async updateUser(_id:string, updateUser:User) {
+        const update = await this.userModel.findByIdAndUpdate(new ObjectId(_id),
+        {   role:updateUser.role,
+             firstName: updateUser.firstName,
+             lastName: updateUser.lastName,
+             phone: updateUser.phone,
+              email: updateUser.email
+            });
         return update;
           
         }

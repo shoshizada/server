@@ -10,9 +10,9 @@ export class SystemController {
   constructor(private systemService: SystemService) { }
 
   @Post()
-  async signup(@Body('newSystem') newSystem: System) {
-    console.log(newSystem);
-    const result = await this.systemService.addSystem(newSystem);
+  async signup(@Body('newBusiness') newBusiness: any) {
+    console.log(newBusiness);
+    const result = await this.systemService.addSystem(newBusiness);
     return result
   }
 
@@ -30,8 +30,7 @@ export class SystemController {
   }
 
   @Put('/:id')
-  update(@Param('_id') _id: string, @Body('topic') topic: string, @Body('objectname') objectname: string, @Body('owner') owner: string,
-    @Body('description') description: string, @Body('phone') phone: string, @Body('mail') mail: string) {
-    return this.systemService.updateSystem(_id, topic, objectname, owner, description, phone, mail)
+  update(@Param('_id') _id: string, @Body('updateSystem') updateSystem:System) {
+    return this.systemService.updateSystem(_id, updateSystem)
   }
 }
