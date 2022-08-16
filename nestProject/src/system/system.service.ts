@@ -12,7 +12,7 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
  async addSystem(newSystem:System) {
         const createSystem = new this.systemModel(
             {   
-                object:newSystem.object,
+                topic:newSystem.topic,
                 objectname:newSystem.objectname,
                 owner: newSystem.owner, 
                 descrapition: newSystem.descrapition,
@@ -39,11 +39,11 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
        }
 
        async updateSystem(_id:string, updateSystem:System) {
-           console.log(updateSystem.object);
+           console.log(updateSystem.topic);
         const update = await this.systemModel.findByIdAndUpdate(new ObjectId(_id),
         { 
                 // id:updateSystem.id,
-                object:updateSystem.object,
+                topic:updateSystem.topic,
                 objectname:updateSystem.objectname,
                 owner: updateSystem.owner, 
                 descrapition: updateSystem.descrapition,

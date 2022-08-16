@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 export const SystemSchema = new mongoose.Schema({
 //   id: { type: String, required: true },
-  object: { type: String, required: true },
+  topic: { type: String, required: true },
   objectname: { type: String, required: true },
   owner: { type: String, required: true },
   descrapition: { type: String, required: true},
@@ -13,7 +13,7 @@ export const SystemSchema = new mongoose.Schema({
 
 export interface System {
     // id: string;
-    object: string;
+    topic: string;
     objectname: string;
     owner: string;
     descrapition: string;
