@@ -7,8 +7,9 @@ export class SystemController {
       constructor(private systemService: SystemService) { }
 
   @Post()
-  async signup(@Body('newSystem') newSystem: System) {
-    const result = await this.systemService.addSystem(newSystem);
+   signup(@Body('newSystem') newSystem: System) {
+    console.log(newSystem);
+    const result =  this.systemService.addSystem(newSystem);
     return result
   }
   @Get()

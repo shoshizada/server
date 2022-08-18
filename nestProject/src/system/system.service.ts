@@ -13,11 +13,12 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
         const createSystem = new this.systemModel(
             {   
                 topic:newSystem.topic,
-                objectname:newSystem.objectname,
+                objectName:newSystem.objectName,
                 owner: newSystem.owner, 
-                descrapition: newSystem.descrapition,
+                description: newSystem.description,
                 phone: newSystem.phone,
-                mail: newSystem.mail
+                email: newSystem.email,
+                urlName: newSystem.urlName
             });
     const result=  await  createSystem.save();
        console.log(result);
@@ -44,11 +45,12 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
         { 
                 // id:updateSystem.id,
                 topic:updateSystem.topic,
-                objectname:updateSystem.objectname,
+                objectName:updateSystem.objectName,
                 owner: updateSystem.owner, 
-                descrapition: updateSystem.descrapition,
+                description: updateSystem.description,
                 phone: updateSystem.phone,
-                mail: updateSystem.mail
+                email: updateSystem.email,
+                urlName: updateSystem.urlName
             });
             update.save();
         return update;
