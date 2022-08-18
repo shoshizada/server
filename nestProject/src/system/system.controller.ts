@@ -7,7 +7,7 @@ export class SystemController {
       constructor(private systemService: SystemService) { }
 
   @Post()
-   signup(@Body('newSystem') newSystem: System) {
+   signup(@Body() newSystem: System) {
     console.log(newSystem);
     const result =  this.systemService.addSystem(newSystem);
     return result
@@ -26,7 +26,7 @@ export class SystemController {
     return this.systemService.deleteSystem(_id)
   }
   @Put('/:id')
-  update(@Param('id') _id: string, @Body('updatesystem') updatesystem:System ) {
+  update(@Param('id') _id: string, @Body() updatesystem:System ) {
     console.log(_id)
     return this.systemService.updateSystem(_id, updatesystem)
   }
