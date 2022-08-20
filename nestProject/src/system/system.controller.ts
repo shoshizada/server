@@ -8,7 +8,6 @@ export class SystemController {
 
   @Post()
    signup(@Body() newSystem: System) {
-    console.log(newSystem);
     const result =  this.systemService.addSystem(newSystem);
     return result
   }
