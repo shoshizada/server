@@ -8,8 +8,8 @@ export class UserController {
 
   @Post()
   async signup(@Body('newUser') newUser: User) {
-    const result = await this.userService.addUser(newUser)
-    return result
+    return await this.userService.addUser(newUser)
+
   }
   @Get()
   getAll() {

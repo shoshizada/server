@@ -9,7 +9,6 @@ export const UserSchema = new mongoose.Schema({
 });
 
 export interface User {
-  uid: string;
   role: string;
   firstName: string;
   lastName: string;

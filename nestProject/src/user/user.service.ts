@@ -11,7 +11,7 @@ export class UserService {
 
  async addUser(newUser:User) {
         const createUser = new this.userModel(
-            {role:newUser.role,
+            {  role:newUser.role,
                 firstName:newUser.firstName,
                 lastName:newUser.lastName,
                 phone: newUser.phone, 
