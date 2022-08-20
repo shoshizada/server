@@ -1,18 +1,25 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SystemController } from './system.controller';
+import { SystemService } from './system.service';
 
 describe('SystemController', () => {
-  let controller: SystemController;
+  let systemController: SystemController;
+   let systemService: SystemService;
+
+  const mockSystemService ={
+    
+  }
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [SystemController],
-    }).compile();
+      providers: [SystemService]
+    }).overrideProvider(systemService).useValue(mockSystemService).compile();
 
-    controller = module.get<SystemController>(SystemController);
+    systemController = module.get<SystemController>(SystemController);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(systemController).toBeDefined();
   });
 });
