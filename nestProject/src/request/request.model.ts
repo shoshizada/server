@@ -16,7 +16,7 @@ export interface Request {
     lastName: string;
     email: string;
     phone: string;
-    system_id: string;
+    system_id: mongoose.Schema.Types.ObjectId;
     display_name: string
     status: string;
     notes: string;

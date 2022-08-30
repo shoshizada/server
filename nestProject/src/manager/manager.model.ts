@@ -16,7 +16,7 @@ export const ManagerSchema = new mongoose.Schema({
 });
 
 export interface Manager {
-    user_id: string;
+    user_id: mongoose.Schema.Types.ObjectId;
     system_id: string;
     active: boolean;
     display_name: string;

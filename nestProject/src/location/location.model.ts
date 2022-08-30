@@ -26,8 +26,8 @@ export const LocationSchema = new mongoose.Schema({
 });
 
 export interface Location {
-    manager_id: string;
-    system_id: string;
+    manager_id: mongoose.Schema.Types.ObjectId;
+    system_id: mongoose.Schema.Types.ObjectId;
     location_geolocation: {
         lat: number,
         lng: number
