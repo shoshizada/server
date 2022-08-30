@@ -9,10 +9,11 @@ export class LocationService {
     constructor(@InjectModel('Location') private readonly locationModel: Model<Location>) {}
 
         async addLocation(newLocation:Location) {
+            console.log(newLocation);
                 const createLocation = new this.locationModel(
                     {   
-                        manager_id: newLocation.manager_id,
-                        system_id: newLocation.system_id,
+                        manager_id: new ObjectId(newLocation.manager_id),
+                        system_id: new ObjectId(newLocation.system_id),
                         location_geolocation: {
                             lat: newLocation.location_geolocation.lat,
                             lng: newLocation.location_geolocation.lng
