@@ -7,7 +7,7 @@ export class UserController {
   constructor(private userService: UserService) { }
 
   @Post()
-  async signup(@Body('newUser') newUser: User) {
+  async signup(@Body() newUser: User) {
     return await this.userService.addUser(newUser)
 
   }

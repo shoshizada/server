@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 
 export const UserSchema = new mongoose.Schema({
-  role: { type: String, enum: ['admin', 'customer'], required: true },
+  firebase_uid: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   phone: { type: String, required: true },
@@ -9,7 +9,7 @@ export const UserSchema = new mongoose.Schema({
 });
 
 export interface User {
-  role: string;
+  firebase_uid: string;
   firstName: string;
   lastName: string;
   phone: string;

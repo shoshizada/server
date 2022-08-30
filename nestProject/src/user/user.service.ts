@@ -11,7 +11,7 @@ export class UserService {
 
  async addUser(newUser:User) {
         const createUser = new this.userModel(
-            {  role:newUser.role,
+            {  firebase_uid:newUser.firebase_uid,
                 firstName:newUser.firstName,
                 lastName:newUser.lastName,
                 phone: newUser.phone, 
@@ -26,7 +26,7 @@ export class UserService {
         return result as User[];
     }
     async getByID(id:string) {
-        const result = await this.userModel.findOne({_id:id});
+        const result = await this.userModel.findById({_id:id});
         return result;
 
     }
@@ -38,7 +38,7 @@ export class UserService {
 
        async updateUser(_id:string, updateUser:User) {
         const update = await this.userModel.findByIdAndUpdate(new ObjectId(_id),
-        {   role:updateUser.role,
+        {   firebase_uid:updateUser.firebase_uid,
              firstName: updateUser.firstName,
              lastName: updateUser.lastName,
              phone: updateUser.phone,

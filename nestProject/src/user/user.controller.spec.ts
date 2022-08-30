@@ -3,10 +3,9 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { User } from './user.model'
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
-
 describe('UserController', () => {
+  
   let controller: UserController;
-
   const mockUserService = {
     signup: jest.fn((
       user) => {
@@ -70,11 +69,10 @@ it('should create a user', () => {
   expect(mockUserService.signup).toHaveBeenCalledWith({user})
 })
 it('should return arry of users', () => {
+  
   expect(mockUserService.getAll).toHaveBeenCalled();
 })
 it('should return user by id', () => {
   expect(mockUserService.getAll).toHaveBeenCalledWith({id:10});
 })
-
-
 });

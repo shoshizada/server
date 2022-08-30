@@ -12,13 +12,13 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
  async addSystem(newSystem:System) {
         const createSystem = new this.systemModel(
             {   
-                topic:newSystem.topic,
-                objectName:newSystem.objectName,
-                owner: newSystem.owner, 
+                admin_id:newSystem.admin_id,
+                name:newSystem.name,
                 description: newSystem.description,
+                subject: newSystem.subject,
                 phone: newSystem.phone,
-                email: newSystem.email,
-                urlName: newSystem.urlName
+                email: newSystem.email
+               
             });
     const result=  await  createSystem.save();
        console.log(result);
@@ -36,21 +36,20 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
     async deleteSystem(id:string) {
         const user=await this.systemModel.findByIdAndDelete(id);
         user.save();
-        return "sucsess!"
+        return "success!"
        }
 
        async updateSystem(_id:string, updateSystem:System) {
-           console.log(updateSystem.topic);
+           console.log(updateSystem.name);
         const update = await this.systemModel.findByIdAndUpdate(new ObjectId(_id),
         { 
                 // id:updateSystem.id,
-                topic:updateSystem.topic,
-                objectName:updateSystem.objectName,
-                owner: updateSystem.owner, 
+                admin_id:updateSystem.admin_id,
+                name:updateSystem.name,
                 description: updateSystem.description,
+                subject: updateSystem.subject,
                 phone: updateSystem.phone,
-                email: updateSystem.email,
-                urlName: updateSystem.urlName
+                email: updateSystem.email
             });
             update.save();
         return update;
