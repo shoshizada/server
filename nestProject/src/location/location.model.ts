@@ -29,8 +29,8 @@ export interface Location {
     manager_id: mongoose.Schema.Types.ObjectId;
     system_id: mongoose.Schema.Types.ObjectId;
     location_geolocation: {
-        lat: number,
-        lng: number
+        lat: string,
+        lng: string
     };
     description: string;
     name: string;
@@ -39,5 +39,4 @@ export interface Location {
         phone: string,
         email: string
     }
-
 }
