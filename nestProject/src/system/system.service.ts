@@ -34,8 +34,8 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
 
     }
     async deleteSystem(id:string) {
-        const user=await this.systemModel.findByIdAndDelete(id);
-        user.save();
+        const system=await this.systemModel.findByIdAndDelete(id);
+        system.save();
         return "success!"
        }
 

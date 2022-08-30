@@ -4,6 +4,7 @@ import { UserModule } from './user/user.module';
 import { SystemModule } from './system/system.module';
 import { ManagerModule } from './manager/manager.module';
 import { LocationModule } from './location/location.module';
+import { RequestModule } from './request/request.module';
 
 
 
@@ -13,6 +14,7 @@ import { LocationModule } from './location/location.module';
    SystemModule,
    ManagerModule,
    LocationModule,
+   RequestModule,
 ]
 })
 export class AppModule {}

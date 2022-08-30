@@ -32,8 +32,8 @@ export class ManagerService {
 
     }
     async deleteManager(id:string) {
-        const user=await this.managerModel.findByIdAndDelete(id);
-        user.save();
+        const manager=await this.managerModel.findByIdAndDelete(id);
+        manager.save();
         return "success!"
        }
     async updateManager(_id:string, updateManager:Manager) {
