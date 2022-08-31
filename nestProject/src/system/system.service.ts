@@ -10,6 +10,7 @@ export class SystemService {
 constructor(@InjectModel('System') private readonly systemModel: Model<System> ) { }
 
  async addSystem(newSystem:System) {
+     console.log(newSystem);
         const createSystem = new this.systemModel(
             {   
                 admin_id:newSystem.admin_id,
@@ -29,7 +30,9 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
         return result as System[];
     }
     async getByID(id:string) {
-        const result = await this.systemModel.findOne({_id:id});
+        console.log(id);
+        const result = await this.systemModel.findOne({_id:new ObjectId(id)});
+        console.log(result);
         return result;
 
     }
@@ -40,7 +43,7 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
        }
 
        async updateSystem(_id:string, updateSystem:System) {
-           console.log(updateSystem.name);
+           console.log(updateSystem);
         const update = await this.systemModel.findByIdAndUpdate(new ObjectId(_id),
         { 
                 // id:updateSystem.id,
@@ -51,8 +54,9 @@ constructor(@InjectModel('System') private readonly systemModel: Model<System> )
                 phone: updateSystem.phone,
                 email: updateSystem.email
             });
-            update.save();
-        return update;
+           const result = await update.save();
+           console.log(result);
+        return result;
           
         }
 
