@@ -25,7 +25,8 @@ export class LocationController {
     @Put('/:id')
     update(@Param('id') _id: string, @Body() updateLocation: Location) {
         console.log(_id)
-        return this.locationService.updateLocation(_id, updateLocation)
+        const result= this.locationService.updateLocation(_id, updateLocation);
+        return result;
     }
 }
 

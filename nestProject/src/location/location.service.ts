@@ -44,11 +44,12 @@ export class LocationService {
         return "success!"
        }
            async updateLocation(_id:string, updateLocation:Location) {
-           console.log(updateLocation.manager_id);
+           console.log(updateLocation);
+           console.log(updateLocation.location_geolocation.lng);
         const update = await this.locationModel.findByIdAndUpdate(new ObjectId(_id),
         { 
-                        manager_id: updateLocation.manager_id,
-                        system_id: updateLocation.system_id,
+                        manager_id: new ObjectId(updateLocation.manager_id),
+                        system_id: new ObjectId(updateLocation.system_id),
                         location_geolocation: {
                             lat: updateLocation.location_geolocation.lat,
                             lng: updateLocation.location_geolocation.lng
@@ -61,8 +62,9 @@ export class LocationService {
                             email: updateLocation.communication_details.email
                         }
             });
-            update.save();
-        return update;
+            const result=await update.save();
+            console.log(result);
+        return result;
           
         }  
 }
