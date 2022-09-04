@@ -6,27 +6,53 @@ import { Request } from './request.model'
 export class RequestController {
     constructor(private requestService: RequestService) {}
 
-      @Post()
+   @Post()
    signup(@Body() newRequest: Request) {
-    const result =  this.requestService.addRequest(newRequest);
-    return result
+     try {
+           const result =  this.requestService.addRequest(newRequest);
+           return result
+     } catch (error) {
+        console.log(error);
+     }
+
   }
+
   @Get()
   getAll() {
-    return this.requestService.getAll()
+    try {
+      return this.requestService.getAll()
+    } catch (error) {
+          console.log(error);
+    }
+    
   }
   @Get('/:id')
   getByID(@Param('id') id: string) {
-    return this.requestService.getByID(id)
+    try {
+       return this.requestService.getByID(id)
+    } catch (error) {
+         console.log(error);
+    }
+   
   }
 
   @Delete('/:id')
   delete(@Param('id') _id: string) {
-    return this.requestService.deleteRequest(_id)
+    try {
+         return this.requestService.deleteRequest(_id)
+    } catch (error) {
+          console.log(error);
+    }
+ 
   }
+
   @Put('/:id')
   update(@Param('id') _id: string, @Body() updateRequest:Request ) {
     console.log(_id)
-    return this.requestService.updateRequest(_id, updateRequest)
+    try {
+          return this.requestService.updateRequest(_id, updateRequest)
+    } catch (error) {
+         console.log(error);
+    }
   }
 }

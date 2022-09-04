@@ -8,24 +8,54 @@ export class ManagerController {
 
     @Post()
     signup(@Body() newManager: Manager) {
-        const result = this.managerService.addManager(newManager);
-        return result
+    
+        try {
+           const result = this.managerService.addManager(newManager);
+           return result  
+        } catch (error) {
+            console.log(error);
+        }
+       
     }
     @Get()
     getAll() {
-        return this.managerService.getAll()
+        
+        try {
+             return this.managerService.getAll()
+        } catch (error) {
+                console.log(error);
+        }
+       
     }
     @Get('/:id')
     getByID(@Param('id') id: string) {
-        return this.managerService.getByID(id)
+
+        try {
+              return this.managerService.getByID(id)
+        } catch (error) {
+              console.log(error);
+        }
+      
     }
     @Delete('/:id')
     delete(@Param('id') _id: string) {
-        return this.managerService.deleteManager(_id)
+
+        try {
+             return this.managerService.deleteManager(_id)
+        } catch (error) {
+            console.log(error);
+        }
+   
     }
     @Put('/:id')
     update(@Param('id') _id: string, @Body() updateManager: Manager) {
         console.log(_id)
-        return this.managerService.updateManager(_id, updateManager)
+
+        try {
+              return this.managerService.updateManager(_id, updateManager)
+        } catch (error) {
+               console.log(error);
+        }
+      
     }
 }

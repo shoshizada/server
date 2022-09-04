@@ -10,6 +10,7 @@ export class LocationService {
 
         async addLocation(newLocation:Location) {
             console.log(newLocation);
+               console.log(newLocation.communication_details.email);
                 const createLocation = new this.locationModel(
                     {   
                         manager_id: new ObjectId(newLocation.manager_id),

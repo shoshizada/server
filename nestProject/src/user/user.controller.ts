@@ -8,26 +8,48 @@ export class UserController {
 
   @Post()
   async signup(@Body() newUser: User) {
-    return await this.userService.addUser(newUser)
-
+    try {
+          return await this.userService.addUser(newUser)
+    } catch (error) {
+        console.log(error);
+    }
   }
+  
   @Get()
   getAll() {
-    return this.userService.getAll()
+  try {
+      return this.userService.getAll()
+  } catch (error) {
+      console.log(error);
   }
+  }
+
   @Get('/:id')
   getByID(@Param('id') id: string) {
-    return this.userService.getByID(id)
+    try {
+      return this.userService.getByID(id)
+    } catch (error) {
+           console.log(error);
+    }
   }
 
   @Delete('/:id')
   delete(@Param('id') _id: string) {
-    return this.userService.deleteUser(_id)
+    try {
+         return this.userService.deleteUser(_id)
+    } catch (error) {
+         console.log(error);
+    }
   }
+  
   @Put('/:id')
   update(@Param('id') _id: string, @Body('updateUser') updateUser:User ) {
     console.log(_id)
-    return this.userService.updateUser(_id, updateUser)
-  }
+    try {
+         return this.userService.updateUser(_id, updateUser)
+    } catch (error) {
+            console.log(error);
+    }
+ }
 
 }
