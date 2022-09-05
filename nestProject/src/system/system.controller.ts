@@ -8,26 +8,52 @@ export class SystemController {
 
   @Post()
    signup(@Body() newSystem: System) {
-    const result =  this.systemService.addSystem(newSystem);
-    return result
+     try {
+         const result =  this.systemService.addSystem(newSystem);
+         return result
+     } catch (error) {
+         console.log(error);
+     }
+  
   }
+  
   @Get()
   getAll() {
-    return this.systemService.getAll()
+    try {
+       return this.systemService.getAll()
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   @Get('/:id')
   getByID(@Param('id') id: string) {
-    return this.systemService.getByID(id)
-  }
+    
+    try {
+        return this.systemService.getByID(id)
+    } catch (error) {
+        console.log(error);
+    }
+ }
 
   @Delete('/:id')
   delete(@Param('id') _id: string) {
-    return this.systemService.deleteSystem(_id)
-  }
+    try {
+        return this.systemService.deleteSystem(_id)
+    } catch (error) {
+          console.log(error);
+    }
+ }
+
   @Put('/:id')
   update(@Param('id') _id: string, @Body() updatesystem:System ) {
     console.log(_id)
-    return this.systemService.updateSystem(_id, updatesystem)
+    try {
+        return this.systemService.updateSystem(_id, updatesystem)
+    } catch (error) {
+         console.log(error);
+    }
+
   }
 }
 

@@ -7,26 +7,52 @@ export class LocationController {
     constructor(private locationService: LocationService) { }
     @Post()
     signup(@Body() newLocation: Location) {
-        const result = this.locationService.addLocation(newLocation);
-        return result
+        try {
+          const result = this.locationService.addLocation(newLocation);
+          return result;
+        } catch (error) {
+           console.log(error);
+        }
     }
     @Get()
     getAll() {
-        return this.locationService.getAll()
+        try {
+           return this.locationService.getAll()
+        } catch (error) {
+                 console.log(error);
+        }
     }
+
     @Get('/:id')
     getByID(@Param('id') id: string) {
-        return this.locationService.getByID(id)
+        try {
+           return this.locationService.getByID(id)
+        } catch (error) {
+                console.log(error); 
+        }
     }
+
     @Delete('/:id')
     delete(@Param('id') _id: string) {
-        return this.locationService.deleteLocation(_id)
+
+        try {
+            return this.locationService.deleteLocation(_id)
+        } catch (error) {
+                 console.log(error);
+        }
+        
     }
+
     @Put('/:id')
     update(@Param('id') _id: string, @Body() updateLocation: Location) {
         console.log(_id)
-        const result= this.locationService.updateLocation(_id, updateLocation);
-        return result;
+        try {
+                 const result= this.locationService.updateLocation(_id, updateLocation);
+                 return result;
+        } catch (error) {
+                 console.log(error);
+        }
+   
     }
 }
 
