@@ -2,8 +2,8 @@ import * as mongoose from 'mongoose';
 
 export const ManagerSchema = new mongoose.Schema({
     user_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        type: String,
+        required: true
     },
     system_id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -16,7 +16,7 @@ export const ManagerSchema = new mongoose.Schema({
 });
 
 export interface Manager {
-    user_id: mongoose.Schema.Types.ObjectId;
+    user_id: string;
     system_id: string;
     active: boolean;
     display_name: string;
