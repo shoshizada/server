@@ -7,9 +7,8 @@ import { LocationModule } from './location/location.module';
 import { RequestModule } from './request/request.module';
 
 
-
 @Module({
-  imports: [  MongooseModule.forRoot('mongodb://localhost:27017/nest'),
+  imports: [  MongooseModule.forRoot('mongodb+srv://shoshi:afKRPnJYL8scs7xL@cluster0.kovcjyz.mongodb.net/?retryWrites=true&w=majority'),
    UserModule,
    SystemModule,
    ManagerModule,
