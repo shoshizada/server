@@ -25,8 +25,8 @@ export class SystemController {
       console.log(error);
     }
   }
-
-  @Get('/:id')
+  
+@Get('/:id')
   getByID(@Param('id') id: string) {
     
     try {
