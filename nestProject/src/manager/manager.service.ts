@@ -26,11 +26,17 @@ export class ManagerService {
         const result = await this.managerModel.find();
         return result as Manager[];
     }
+
     async getByID(id:string) {
         const result = await this.managerModel.findOne({_id:id});
         return result;
-
     }
+
+    async getManagerBySystemID(ids:string) {
+        const result = await this.managerModel.findOne({system_id:new ObjectId(ids)});
+        return result;
+    }
+
     async deleteManager(id:string) {
         const manager=await this.managerModel.findByIdAndDelete(id);
         manager.save();
