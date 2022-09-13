@@ -10,7 +10,9 @@ export class RequestController {
    signup(@Body() newRequest: Request) {
      try {
            const result =  this.requestService.addRequest(newRequest);
+           console.log(result);
            return result
+        
      } catch (error) {
         console.log(error);
      }
@@ -29,7 +31,9 @@ export class RequestController {
   @Get('/:id')
   getByID(@Param('id') id: string) {
     try {
+      console.log(id);
        return this.requestService.getByID(id)
+  
     } catch (error) {
          console.log(error);
     }

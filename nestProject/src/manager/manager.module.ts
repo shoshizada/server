@@ -7,6 +7,7 @@ import { ManagerService } from './manager.service';
 @Module({
   imports: [MongooseModule.forFeature([{name: 'Manager', schema: ManagerSchema}])],
   controllers: [ManagerController],
-  providers: [ManagerService]
+  providers: [ManagerService],
+  exports:[ManagerService]
 })
 export class ManagerModule {}
