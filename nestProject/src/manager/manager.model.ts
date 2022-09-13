@@ -6,8 +6,8 @@ export const ManagerSchema = new mongoose.Schema({
         required: true
     },
     system_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "System"
+        type: String,
+        required: true
     },
     active: { type: Boolean, required: true },
     display_name: { type: String, required: true },
