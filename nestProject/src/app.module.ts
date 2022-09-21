@@ -9,7 +9,7 @@ import {MailModule } from './mail/mail.module';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [  MongooseModule.forRoot('mongodb+srv://shoshi:afKRPnJYL8scs7xL@cluster0.kovcjyz.mongodb.net/?retryWrites=true&w=majority'),
+  imports: [  MongooseModule.forRoot('mongodb://localhost:27017/nest'),
   ConfigModule.forRoot({
   envFilePath: '.env',
   }),
